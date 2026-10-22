@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-        with: { node-version: 22 }
+        with: { node-version: 24 }
       - name: Install n8n
         run: mkdir -p /tmp/n8n && cd /tmp/n8n && npm init -y >/dev/null && npm install n8n@2.44.5
       - name: End-to-end test in real n8n
