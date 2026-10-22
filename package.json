@@ -1,0 +1,20 @@
+{
+  "name": "grokbot-inbox-assistant",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Inbox assistant starter: new email → summary, next action and reply draft → approve in Telegram. n8n + AgentMail + Grok API, plus a Grok Bot pack.",
+  "license": "MIT",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "build": "node scripts/build-workflow.mjs",
+    "setup": "node scripts/setup.mjs",
+    "samples": "node scripts/send-samples.mjs",
+    "telegram-chat-id": "node scripts/telegram-chat-id.mjs",
+    "test": "node tests/unit.mjs",
+    "test:n8n": "node tests/e2e-n8n.mjs"
+  },
+  "devDependencies": {
+    "playwright-core": "1.64.1"
+  }
+}

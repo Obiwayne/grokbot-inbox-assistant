@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm test
+
+  n8n:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: Install n8n
+        run: mkdir -p /tmp/n8n && cd /tmp/n8n && npm init -y >/dev/null && npm install n8n@2.44.5
+      - name: End-to-end test in real n8n
+        run: npm run test:n8n
+        env:
+          N8N_BIN: /tmp/n8n/node_modules/n8n/bin/n8n
